@@ -7,7 +7,9 @@ from . import views
 urlpatterns = [
     path("", views.start, name="start"),
     path("menu", views.menu, name="menu"),
-    
+    path("faq", views.faq, name="faq"),
+    path("delivery", views.delivery, name="delivery"),
+    path("about", views.about, name="about"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
