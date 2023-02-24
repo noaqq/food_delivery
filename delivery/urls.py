@@ -6,6 +6,7 @@ from . import views
 
 urlpatterns = [
     path("", views.start, name="start"),
+    path("menu", views.menu, name="menu"),
     
 ]
 if settings.DEBUG:
