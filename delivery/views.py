@@ -21,3 +21,6 @@ def faq(request):
 def delivery(request):
     return render(request, "delivery/delivery.html")
 
+
+def login_user(request):
+    return render(request, "delivery/login_user.html")
