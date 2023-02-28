@@ -10,7 +10,7 @@ urlpatterns = [
     path("faq", views.faq, name="faq"),
     path("delivery", views.delivery, name="delivery"),
     path("about", views.about, name="about"),
-    path("login", views.login, name="login"),
+    path("login", views.login, name="login_user"),
     path("regist", views.regist, name = "regist"),
 ]
 if settings.DEBUG:

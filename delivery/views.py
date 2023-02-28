@@ -29,11 +29,11 @@ def regist(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("login_user")
+            return redirect("delivery/login_user.html")
     else:
         form = UserCreationForm()
     return render(request, "delivery/regist.html", {"form":form})
 
 
 def login(request):
-    pass
+    return render(request, "delivery/login_user.html")
