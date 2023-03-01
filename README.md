@@ -9,5 +9,5 @@
 
 <h1>Starting</h1>
 
-1. You need write **docker-compose up -d --build**
+1. You need to write **docker-compose up -d --build**
 2. Open **localhost**
