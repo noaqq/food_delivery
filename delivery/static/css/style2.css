@@ -2,12 +2,13 @@
 
 .outerdiv
 {
-	width: 100%;
+  	width: 100%;
     min-height: 100vh;
     background: #000000;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 70px;
 }
 .innerdiv
 {
