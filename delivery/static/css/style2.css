@@ -1,148 +1,175 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,900");
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
 
- .cards {
-	 width: calc(100% - 2em);
-	 display: grid;
-	 grid-template-columns: 1fr 1fr 1fr 1fr;
-	 grid-template-rows: 1fr 1fr;
-	 grid-gap: 1em;
-	 grid-template-areas: "a a b c" "a a d d";
-	 width: 80%;
-   padding-top: 150px;
-   padding-left: 370px;
-   
+.outerdiv
+{
+	width: 100%;
+    min-height: 100vh;
+    background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
- .card {
-	 width: 100%;
-	 position: relative;
-	 transition: all 0.25s ease;
-	 cursor: pointer;
-	 font-family: "Roboto", sans-serif;
-	 font-weight: 300;
+.innerdiv
+{
+	transform: scale(0.9);
+	margin: 1rem;
+	display: grid;
+	grid-gap: 1.5rem;
+	grid-template-rows: repeat(2,22rem);
+	grid-template-columns: repeat(4,17rem);
 }
- .card:last-child {
-	 margin-bottom: 0;
+.eachdiv
+{
+	padding: 1rem 2rem;
+    border-radius: 0.8rem;
+    box-shadow: 5px 5px 20px #6d6b6b6b;
+    color: white;
 }
- .card:before {
-	 height: 0;
-	 content: "";
-	 display: block;
-	 padding-bottom: 47.36%;
+.div1
+{
+	background: #733FC8;
+    grid-column: 1/3;
+    grid-row: 1/2;
+    background-image: url(https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/bg-pattern-quotation.svg);
+    background-repeat: no-repeat;
+    background-position-x: 25rem;
 }
- .card.content:after {
-	 position: absolute;
-	 bottom: 0;
-	 left: 0;
-	 width: 100%;
-	 height: 50%;
-	 content: "";
-	 background: linear-gradient(to bottom, rgba(0, 0, 0, 0), black);
+.div2
+{
+	background:#49556B;
+    grid-column: 3/4;
+    grid-row: 1/2;
 }
- .card:nth-child(1) {
-	 grid-area: a;
+.div3
+{
+	background: white;
+    grid-column: 4/5;
+    grid-row: 1/3;
+    color: black;
 }
- .card:nth-child(2) {
-	 grid-area: b;
+.div4
+{
+	background: white;
+	grid-column: 1/2;
+    grid-row: 2/3;
+    color: black;
 }
- .card:nth-child(3) {
-	 grid-area: c;
+.div5
+{
+	background: #18202D;
+	grid-column: 2/4;
+    grid-row: 2/3;
 }
- .card:nth-child(4) {
-	 grid-area: d;
+.userdetails
+{
+	display: flex;
 }
- .card-content {
-	 position: absolute;
-	 top: 0;
-	 left: 0;
-	 width: 100%;
-	 height: 100%;
+.imgbox
+{
+	margin-right: 1rem;
 }
- .card-img {
-	 position: absolute;
-	 top: 0;
-	 left: 0;
-	 width: 100%;
-	 height: 100%;
+.imgbox img
+{
+	border-radius: 50%;
+	width: 2rem;
+	border: 2px solid #cec5c5;
 }
- .card-img img {
-	 width: 100%;
-	 height: 100%;
-	 object-fit: cover;
+.detbox
+{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
- .card-label {
-	 position: absolute;
-	 top: 0.45rem;
-	 left: 0.45rem;
-	 background: #089f8a;
-	 text-transform: uppercase;
-	 font-weight: 300;
-	 font-size: 0.7em;
-	 color: white;
-	 padding: 0.5em;
+.detbox p
+{
+	margin: 0;
 }
- .card-title {
-	 position: absolute;
-	 left: 1em;
-	 bottom: 1em;
-	 color: #d6dbeb;
-	 z-index: 5;
-	 font-size: 0.8em;
+.detbox .name
+{
+	color: hsl(0, 0%, 81%);
+    font-size: 0.9rem;
+    margin-bottom: 0.1rem;
+    font-weight: 600;
 }
- .card.form {
-	 position: relative;
+.detbox .name.dark
+{
+	color: #49505A;
 }
- .card.form:before {
-	 background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+.detbox .designation
+{
+	color: hsl(0, 0%, 81%);
+    opacity: 50%;
+    font-size: 0.8rem;
 }
- .card.form:after {
-	 position: absolute;
-	 top: 0.5em;
-	 left: 0.5em;
-	 width: calc(100% - 1em);
-	 height: calc(100% - 1em);
-	 content: "";
-	 background: #252833;
+.detbox .designation.dark
+{
+	color: #49505A;
 }
- .card.form .form-title {
-	 position: absolute;
-	 top: 1rem;
-	 left: 1rem;
-	 font-size: 7vw;
-	 font-weight: 900;
-	 z-index: 5;
-	 text-transform: uppercase;
-	 background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-	 -webkit-text-fill-color: transparent;
-	 -webkit-background-clip: text;
+.review h4
+{
+	font-size: 1.4rem;
+	color: #F3DEFF;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
 }
- .card.form .form-title:before {
-	 position: absolute;
-	 top: 50%;
-	 left: 50%;
-	 width: 100%;
-	 height: 100%;
-	 content: "Sign Up";
-	 opacity: 0.5;
-	 filter: blur(10px);
-	 transition: all 0.25s ease;
-	 z-index: 2;
-	 background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-	 -webkit-text-fill-color: transparent;
-	 -webkit-background-clip: text;
-	 transform: translateX(-50%) translateY(-50%);
+.review.dark h4{
+	color:#4B5258;
 }
- .card:nth-child(2) .card-label {
-	 background: #ef4e7b;
+.review p
+{
+	font-size: 0.95rem;
+    color: #F3DEFF;
+    font-weight: 500;
+    opacity: 50%;
+    line-height: 1.5;
 }
- .card:nth-child(3) .card-label {
-	 background: #1098ad;
+.review.dark p{
+	color: #0e0e0e;
 }
- .card:hover {
-	 transform: scale(1.05);
-	 box-shadow: 0 0 30px rgba(0, 0, 0, 0.35);
+.attribution
+{
+	font-size: 1rem;
+    line-height: 1.5;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    text-align: right;
 }
- .card:hover .form-title:before {
-	 filter: blur(3px);
-	 opacity: 0.7;
+.attribution a
+{
+	text-decoration: none;
 }
- 
+
+@media only screen and (max-width: 1000px)
+{
+	.innerdiv
+	{
+		transform: scale(0.7);
+	}
+}
+@media only screen and (max-width: 800px)
+{
+	.innerdiv
+	{
+		transform: scale(0.6);
+	}
+}
+@media only screen and (max-width: 600px)
+{
+	.div1 {
+		background-position-x: 10rem;
+	}
+	.innerdiv
+	{
+		display: flex; 
+		flex-direction: column;
+		transform: scale(1);
+		margin: 2rem;
+		margin-bottom: 5rem;
+	}
+	.attribution
+	{
+		position: relative;
+	}
+}
