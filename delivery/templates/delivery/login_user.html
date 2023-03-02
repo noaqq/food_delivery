@@ -1,1 +1,30 @@
-Hi!
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/login.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="login-page">
+        <div class="form">
+          <form class="register-form acrylic">
+            <span>Sign Up</span>
+            <input type="text" placeholder="Email"/>
+            <input type="password" placeholder="Password"/>
+            <button id="SignUp">Go</button>
+            <p class="message"><a href="#">I have Account</a></p>
+          </form>
+          <form class="login-form acrylic">
+            <span>Login to your account</span>
+            <input type="text" placeholder="Email"/>
+            <input type="password" placeholder="Password"/>
+            <button id="SignIn">Login</button>
+            <p class="message"><a href="#">Create Account</p>
+          </form>
+        </div>
+</body>
+</html>
