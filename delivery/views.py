@@ -29,6 +29,7 @@ def start(request):
 def about(request):
     return render(request, "delivery/about.html")
 
+
 @login_required(login_url="/")
 def menu(request):
     return render(request, "delivery/menu.html")
@@ -36,6 +37,7 @@ def menu(request):
 
 def faq(request):
     return render(request, "delivery/faq.html")
+
 
 @login_required(login_url="start")
 def delivery(request):
@@ -72,6 +74,7 @@ def login_user(request):
             return render(request, "delivery/login_user.html")
     else:
         return render(request, "delivery/login_user.html")
+
 
 @login_required(login_url="start")
 def logout_user(request):
