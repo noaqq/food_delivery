@@ -1,9 +1,25 @@
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 
 from .forms import RegisterForm
+
+
+def anonymous_required(function=None, redirect_url="start"):
+
+    if not redirect_url:
+        redirect_url = settings.LOGIN_REDIRECT_URL
+
+    actual_decorator = user_passes_test(
+        lambda u: u.is_anonymous, login_url=redirect_url
+    )
+
+    if function:
+        return actual_decorator(function)
+    return actual_decorator
 
 
 def start(request):
@@ -13,7 +29,7 @@ def start(request):
 def about(request):
     return render(request, "delivery/about.html")
 
-
+@login_required(login_url="/")
 def menu(request):
     return render(request, "delivery/menu.html")
 
@@ -21,11 +37,12 @@ def menu(request):
 def faq(request):
     return render(request, "delivery/faq.html")
 
-
+@login_required(login_url="start")
 def delivery(request):
     return render(request, "delivery/delivery.html")
 
 
+@anonymous_required
 def regist(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
@@ -41,10 +58,11 @@ def regist(request):
     return render(request, "delivery/regist.html", {"form":form})
 
 
-def login(request):
+@anonymous_required
+def login_user(request):
     if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
+        username = request.POST["username"]
+        password = request.POST["password"]
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
@@ -55,7 +73,7 @@ def login(request):
     else:
         return render(request, "delivery/login_user.html")
 
-
+@login_required(login_url="start")
 def logout_user(request):
     logout(request)
     return redirect("start")
