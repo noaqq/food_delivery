@@ -40,4 +40,15 @@ def regist(request):
     return render(request, "delivery/regist.html", {"form":form})
 
 def login(request):
-    return render(request, "delivery/login_user.html")
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("/")
+        else:
+            # messages.success(request, "Логин или пароль неверны")
+            return render(request, "delivery/login_user.html")
+    else:
+        return render(request, "delivery/login_user.html")
