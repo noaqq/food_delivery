@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 
@@ -48,7 +48,11 @@ def login(request):
             login(request, user)
             return redirect("/")
         else:
-            # messages.success(request, "Логин или пароль неверны")
+            messages.success(request, "Логин или пароль неверны")
             return render(request, "delivery/login_user.html")
     else:
         return render(request, "delivery/login_user.html")
+    
+def logout_user(request):
+    logout(request)
+    return render(request, "delivery/login.html")

@@ -24,6 +24,10 @@
           <li><a href="{% url 'faq' %}">FAQ</a></li>
           <li><a href="{% url 'login_user' %}">Вход</a></li>
           <li><a href="{% url 'regist' %}">Регистрация</a></li>
+          
+          {% if request.user.is_anonymous %}<a href="{% url 'login' %}"><button type="button" class="btn btn-outline-primary me-2">Логин</button></a>{% endif %}
+
+
         </ul>
       </div>
       <div class="info">
