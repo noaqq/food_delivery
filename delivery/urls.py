@@ -12,6 +12,7 @@ urlpatterns = [
     path("about", views.about, name="about"),
     path("login", views.login, name="login_user"),
     path("regist", views.regist, name = "regist"),
+    path("logout", views.logout_user, name="logout"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
