@@ -1,7 +1,9 @@
 from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
+
+from .forms import RegisterForm
 
 
 def start(request):
@@ -29,11 +31,13 @@ def regist(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("delivery/login_user.html")
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password1")
+            user = authenticate(username=username, password=password)
+            return redirect("/")
     else:
-        form = UserCreationForm()
+        form = RegisterForm()
     return render(request, "delivery/regist.html", {"form":form})
-
 
 def login(request):
     return render(request, "delivery/login_user.html")
