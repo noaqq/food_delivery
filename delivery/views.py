@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 
-from .forms import RegisterForm
+from .forms import RegisterUserForm
 
 
 def anonymous_required(function=None, redirect_url="start"):
@@ -45,7 +45,7 @@ def delivery(request):
 @anonymous_required
 def regist(request):
     if request.method == "POST":
-        form = RegisterForm(request.POST)
+        form = RegisterUserForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get("username")
@@ -54,7 +54,7 @@ def regist(request):
             login(request, user)
             return redirect("start")
     else:
-        form = RegisterForm()
+        form = RegisterUserForm()
     return render(request, "delivery/regist.html", {"form":form})
 
 
