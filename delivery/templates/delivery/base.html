@@ -26,9 +26,9 @@
               {% if request.user.is_anonymous %}<li><a href="{% url 'regist' %}">Регистрация</a></li> {% endif %}
             </ul>
           </div>
-      
-      {% block content %}{% endblock %}
+          <main>
+            {%block content%}{%endblock%}
+          </main>
     </div>
-    
   </body>
 </html>
