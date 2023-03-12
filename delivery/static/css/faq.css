@@ -86,7 +86,7 @@ details[open] summary:after {
 }
 
 .faq-body {
-    width: 70em;
+    width: 1000px;
     margin: 4em auto;
     box-shadow: 0px 0px 16px #5b5b5b;
     border-radius: 0.2em;
