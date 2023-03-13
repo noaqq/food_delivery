@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 
 from .forms import RegisterUserForm, catalogForm
+from .models import *
 
 
 def anonymous_required(function=None, redirect_url="start"):
@@ -43,6 +44,15 @@ def create(request):
         if "submitted" in request.GET:
             submitted = True
     return render(request, "delivery/create.html", {"form": form, "submitted": submitted})
+
+
+def search_food(request):
+    if request.method == "GET":
+        error = None
+        catalog_food = catalog.objects.filter(name = request.GET["food"])
+        if not catalog:
+            error = "No food"
+        return render(request, "delivery/search.html", {"catalog_food": catalog_food, "error": error})
 
 
 @login_required(login_url="/")
