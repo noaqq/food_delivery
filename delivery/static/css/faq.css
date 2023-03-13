@@ -25,7 +25,7 @@ div.seperator {
 }
 
 .faq-list > div {
-    border-bottom: 0.07em solid #ededed;
+    border-bottom: 0.07em solid #1a0389;
     padding: 1.5em 0em;
 } 
 
@@ -91,7 +91,7 @@ details[open] summary:after {
     box-shadow: 0px 0px 16px #5b5b5b;
     border-radius: 0.2em;
     padding: 5em;
-    background-color: #fff;
+    background-color: #f8f7ff;
 }
 
 .faq-list {
