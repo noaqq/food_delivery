@@ -3,9 +3,10 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 
-from .forms import RegisterUserForm
+from .forms import RegisterUserForm, catalogForm
 
 
 def anonymous_required(function=None, redirect_url="start"):
@@ -28,6 +29,20 @@ def start(request):
 
 def about(request):
     return render(request, "delivery/about.html")
+
+
+def create(request):
+    submitted = False
+    if request.method == "POST":
+        form = catalogForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("/create?submitted=True")
+    else:
+        form = catalogForm
+        if "submitted" in request.GET:
+            submitted = True
+    return render(request, "delivery/create.html", {"form": form, "submitted": submitted})
 
 
 @login_required(login_url="/")
