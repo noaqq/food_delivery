@@ -4,6 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.validators import UnicodeUsernameValidator
 
+from .models import *
+
 username_validator = UnicodeUsernameValidator()
 
 
@@ -67,3 +69,10 @@ class RegisterUserForm(UserCreationForm):
             "password1": "Пароль",
             "password2": "Подтверждение пароля",
         }
+
+
+class catalogForm(forms.ModelForm):
+    class Meta:
+        model = catalog
+        fields = '__all__'
+        
