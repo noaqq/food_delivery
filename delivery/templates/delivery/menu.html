@@ -52,7 +52,7 @@
                   <img src="{{ el.image }}">
                 </div> 
               {% endfor %} {% endcomment %}
-
+              <div class = "food">
               {% for el in food_list %}
               <div class="container-food">
                 <img src="{{ el.image }}"/>
@@ -60,11 +60,12 @@
                   <h4 class="name">{{ el.name }}</h4>
                   <div class="btn">
                     <h2 class="price">{{ el.price }}</h2>
-                    <a href="#">Order Now</a>
+                    <a href="#">В корзину</a>
                   </div>
                 </div>
               </div>
               {% endfor %}
+            </div>
 
           </main>
           {% endblock %}
