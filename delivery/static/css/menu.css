@@ -1,4 +1,5 @@
-  .container-food {
+  
+.container-food {
     position: relative;
     width: 270px;
     height: 440px;
@@ -9,15 +10,15 @@
     justify-content: center;
     background: #F8F7F5;
     overflow: hidden;
-  }
+}
   
-  .container img {
+.container img {
     z-index: 1;
     width: 270px;
     padding: 35px;
-  }
+}
   
-  .container-food::before {
+.container-food::before {
     content: "";
     position: absolute;
     top: -130px;
@@ -25,9 +26,9 @@
     width: 300px;
     height: 300px;
     opacity: 0.7;
-  }
+}
   
-  .content-box {
+.content-box {
     position: absolute;
     z-index: 1;
     bottom: 7px;
@@ -37,29 +38,30 @@
     padding: 0 7px;
     font-family: "Poppins", sans-serif;
     border-radius: 10px 10px 15px 15px;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(7px);
     background: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.3);
     display: flex;
     align-items: flex-start;
     flex-direction: column;
     justify-content: space-evenly;
-  }
-  .content-box p {
+}
+  
+.content-box p {
     color: #a6a6a6;
     font-size: 13px;
-  }
+}
   
-  .btn {
+.btn {
     width: 248px;
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 7px 0 0;
-  }
+}
   
-  .btn a {
+.btn a {
     width: 150px;
     height: 40px;
     font-size: 15px;
@@ -72,9 +74,16 @@
     font-weight: 700;
     background-color: #f9b02d;
     border-radius: 7px;
-  }
+}
   
-.main-cont{
+.price {
+    color: #a6a6a6;
+}
+
+.food {
+    padding-top: 50px;
     display: flex;
     flex-direction: row;
-}
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
