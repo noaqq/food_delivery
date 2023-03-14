@@ -10,6 +10,7 @@
     <link href="//db.onlinewebfonts.com/c/6899c3dcee443716273e3f7926cc1ec7?family=Rhinos+rocks" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
     <link rel="stylesheet" href="{% static '/css/style3.css' %}">
+    <link rel="stylesheet" href="{% static '/css/menu.css' %}">
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
@@ -48,9 +49,23 @@
                   <h3>{{ el.price }}</h3>
                   <h3>{{ el.description }}</h3>
                   <h3>{{ el.expiration_date }}</h3>
-                  <h3>{{ el.image }}</h3>
-                </div>
+                  <img src="{{ el.image }}">
+                </div> 
               {% endfor %} {% endcomment %}
+
+              {% for el in food_list %}
+              <div class="container-food">
+                <img src="{{ el.image }}"/>
+                <div class="content-box">
+                  <h4 class="name">{{ el.name }}</h4>
+                  <div class="btn">
+                    <h2 class="price">{{ el.price }}</h2>
+                    <a href="#">Order Now</a>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+
           </main>
           {% endblock %}
     </div>
