@@ -28,10 +28,6 @@ def start(request):
     return render(request, "delivery/start.html" ) 
 
 
-def about(request):
-    return render(request, "delivery/about.html")
-
-
 def create(request):
     submitted = False
     if request.method == "POST":
@@ -58,7 +54,7 @@ def create(request):
 
 @login_required(login_url="/")
 def menu(request):
-    food_list = catalog.objects.all()
+    food_list = catalog.objects.order_by("name")
     return render(request, "delivery/menu.html", {"food_list":food_list})
 
 
