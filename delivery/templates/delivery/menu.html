@@ -9,7 +9,7 @@
     <link href="https://fonts.cdnfonts.com/css/blocktastic" rel="stylesheet">
     <link href="//db.onlinewebfonts.com/c/6899c3dcee443716273e3f7926cc1ec7?family=Rhinos+rocks" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
-    <link rel="stylesheet" href="{% static '/css/style2.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style3.css' %}">
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
@@ -30,23 +30,29 @@
             </ul>
           </div>
           <main>
-            <div class="main-box">
-            <div class="box">
-                <h1>Добро пожаловать!</h1>
-                <h2>Пожалуйста, заполните следующие поля:</h2>
-                <form action="{% url 'search' %}" method="get">
-                  <div class="form-group">
-                    <label>Город отправления</label>
-                    <input class="form-control" aria-describedby="emailHelp" name="food" />
-                  </div>
-                  <button type="submit" class="btn btn-outline-primary pd-1">
-                    Подтвердить
-                  </button>
-                </form>
+            <div class = "top-box">
+                <div class = "text-top-box">
+                  <p>Молочная продукция</p>
+                  <p>Полуфабрикаты</p>
+                  <p>Мясная гастрономия</p>
+                  <p>Выпечка</p>
+                  <p>Бакалея</p>
+                  <p>Напитки</p>
+                  <p>Снеки</p>
               </div>
-              
-              {%endblock%}
+            </div>
+              {% comment %} {% for el in food_list %}
+                <div class = "list">
+                  <h3>{{ el.name }}</h3>
+                  <h3>{{ el.category }}</h3>
+                  <h3>{{ el.price }}</h3>
+                  <h3>{{ el.description }}</h3>
+                  <h3>{{ el.expiration_date }}</h3>
+                  <h3>{{ el.image }}</h3>
+                </div>
+              {% endfor %} {% endcomment %}
           </main>
+          {% endblock %}
     </div>
   </body>
 </html>
