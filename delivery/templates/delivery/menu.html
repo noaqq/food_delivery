@@ -23,7 +23,7 @@
               {% if request.user.is_authenticated %}<li><a href="{% url 'menu' %}">Меню</a></li> {% endif %}
               {% if request.user.is_authenticated %} <li><a href="{% url 'delivery' %}">Доставка</a></li> {% endif %}
               <li><a href="{% url 'faq' %}">FAQ</a></li>
-              {% if request.user.is_authenticated %}<li><a href="{% url 'faq' %}">Корзина</a></li>{% endif%}
+              {% if request.user.is_authenticated %}<li><a href="{% url 'order' %}">Корзина</a></li>{% endif%}
               {% if request.user.is_anonymous %}<li><a href="{% url 'login_user' %}">Вход</a></li> {% endif %}
               {% if request.user.is_authenticated %}<li><a href="{% url 'logout' %}">Выход</a></li> {% endif %}
               {% if request.user.is_anonymous %}<li><a href="{% url 'regist' %}">Регистрация</a></li> {% endif %}
@@ -33,13 +33,13 @@
           <main>
             <div class = "top-box">
                 <div class = "text-top-box">
-                  <p>Молочная продукция</p>
-                  <p>Полуфабрикаты</p>
-                  <p>Мясная гастрономия</p>
+                  <p>Молоко, яйца, масло</p>
+                  <p>Мясо и птица</p>
                   <p>Выпечка</p>
                   <p>Бакалея</p>
+                  <p>Полуфабрикаты</p>
                   <p>Напитки</p>
-                  <p>Снеки</p>
+                  <p>Чипсы, орехи, сухофрукты</p>
               </div>
             </div>
               {% comment %} {% for el in food_list %}
