@@ -62,6 +62,10 @@ def faq(request):
     return render(request, "delivery/faq.html")
 
 
+def order(request):
+    return render(request, "delivery/order.html")
+
+
 @login_required(login_url="start")
 def delivery(request):
     return render(request, "delivery/delivery.html")
