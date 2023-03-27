@@ -276,3 +276,10 @@ h6 {
 .marker-outline .timeline-item:hover .timeline-marker:before {
     background: #ff6b6b;
 }
+
+.example-header {
+    padding-top: 50px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
