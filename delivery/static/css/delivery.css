@@ -1,7 +1,7 @@
 body {
     background: linear-gradient(53deg, rgb(255, 128, 2) 51%, rgb(241, 190, 37) 70%);
     background: aliceblue;
-    font-family: "Effra", Helvetica, sans-serif;
+    font-family: "Open Sans", sans-serif;
     padding: 0;
     -webkit-font-smoothing: antialiased;
     height: 1400px;
@@ -279,16 +279,14 @@ h6 {
 }
 
 .example-header {
-    padding-top: 50px;
+    padding-top: 80px;
     display: flex;
     text-align: center;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
-    padding-right: 400px;
 }
 
-img {
-    padding-right: 500px;
-    /* margin-bottom: 50px; */
-}
+/* 
+h1 {
+    color: #f99d00;
+} */
