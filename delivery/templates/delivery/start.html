@@ -25,13 +25,14 @@
           {% if request.user.is_authenticated %}<li><a href="{% url 'logout' %}">Выход</a></li> {% endif %}
           {% if request.user.is_anonymous %}<li><a href="{% url 'regist' %}">Регистрация</a></li> {% endif %}
           {% if request.user.is_staff and request.user.is_authenticated %}<li><a href="{% url 'create' %}">Создать</a></li> {% endif %}
-
         </ul>
       </div>
       <div class="info">
         <h1>Быстрее, чем вы можете себе представить </h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut velit labore eos voluptates numquam tempore at minima sunt obcaecati, dicta suscipit quaerat quasi modi id sapiente, porro consequatur vel debitis?</p>
-        <button>Go</button>
+        <p>Доставка еды - это удобный и быстрый способ заказать еду и получить ее прямо на дом или в офис. Наша компания предлагает качественную доставку еды высокого качества по доступным ценам.
+
+          Мы работаем круглосуточно, чтобы удовлетворить все потребности наших клиентов. Мы предлагаем широкий выбор блюд от лучших ресторанов города, а также свежие и здоровые варианты для тех, кто следит за своим здоровьем.</p>
+        <a href="{% url 'menu' %}"><button>За покупками!</button></a>
       </div>
       <div class="image">
         <img src="{% static '/assets/food_plate.png' %}">
