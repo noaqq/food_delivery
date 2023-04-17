@@ -75,4 +75,5 @@ class catalogForm(forms.ModelForm):
     class Meta:
         model = catalog
         fields = '__all__'
-        
+
+
