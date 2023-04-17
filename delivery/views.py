@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import RegisterUserForm, catalogForm
 from .models import *
@@ -107,3 +107,5 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect("start")
+
+
