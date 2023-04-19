@@ -62,7 +62,15 @@
                   <h4 class="name">{{ el.name }}</h4>
                   <div class="btn">
                     <h2 class="price">{{ el.price }} ₽</h2>
-                    <a href="#">В корзину</a>
+                    {% comment %} <a href="#">В корзину</a> {% endcomment %}
+
+                    <form method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="user" value="{{ user.id }}">
+                      <input type="hidden" name="name" value="{{ el.name }}">
+                      <button type="submit" class="btn" name="Basket">Добавить</button>
+                    </form>
+
                   </div>
                 </div>
               </div>
