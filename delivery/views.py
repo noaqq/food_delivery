@@ -54,6 +54,16 @@ def create(request):
 
 @login_required(login_url="/")
 def menu(request):
+    if request.method == "POST":
+        user = request.POST["user"]
+        name = request.POST["name"]
+        sale = Basket.objects.create(user=user, name=name)
+        sale.save()
+        print(user, name)
+        messages.success(
+            request, ("Товар успещно добавлен в корзину.")
+        )
+        return redirect("menu")
     food_list = catalog.objects.order_by("name")
     return render(request, "delivery/menu.html", {"food_list":food_list})
 
