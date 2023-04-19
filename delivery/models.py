@@ -21,3 +21,12 @@ class catalog(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class Basket(models.Model):
+    user = models.IntegerField("Имя пользователя", max_length=100)
+    name = models.CharField("Название товара", max_length=300)
+    # price = models.IntegerField()
+
+    def __str__(self):
+        return self.name
