@@ -109,3 +109,7 @@ def logout_user(request):
     return redirect("start")
 
 
+def basket(request):
+    pass
+
+
