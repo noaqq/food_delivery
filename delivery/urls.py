@@ -12,7 +12,7 @@ urlpatterns = [
     path("delivery", views.delivery, name="delivery"),
     path("create", views.create, name="create"),
     path("login", views.login_user, name="login_user"),
-    path("regist", views.regist, name = "regist"),
+    path("regist", views.regist, name="regist"),
     path("logout", views.logout_user, name="logout"),
 ]
 if settings.DEBUG:

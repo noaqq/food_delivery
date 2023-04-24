@@ -6,21 +6,17 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 
-from delivery.models import catalog
+from delivery.models import Catalog
 
-from .forms import AddToCartForm, RegisterUserForm, catalogForm
+from .forms import CatalogForm, RegisterUserForm
 from .models import *
-from .models import Cart, CartItem
 
 
 def anonymous_required(function=None, redirect_url="start"):
-
     if not redirect_url:
         redirect_url = settings.LOGIN_REDIRECT_URL
 
-    actual_decorator = user_passes_test(
-        lambda u: u.is_anonymous, login_url=redirect_url
-    )
+    actual_decorator = user_passes_test(lambda u: u.is_anonymous, login_url=redirect_url)
 
     if function:
         return actual_decorator(function)
@@ -28,18 +24,18 @@ def anonymous_required(function=None, redirect_url="start"):
 
 
 def start(request):
-    return render(request, "delivery/start.html" ) 
+    return render(request, "delivery/start.html")
 
 
 def create(request):
     submitted = False
     if request.method == "POST":
-        form = catalogForm(request.POST, request.FILES)
+        form = CatalogForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect("/create?submitted=True")
     else:
-        form = catalogForm
+        form = CatalogForm
         if "submitted" in request.GET:
             submitted = True
     return render(request, "delivery/create.html", {"form": form, "submitted": submitted})
@@ -48,11 +44,10 @@ def create(request):
 # def search_food(request):
 #     if request.method == "GET":
 #         error = None
-#         catalog_food = catalog.objects.filter(name = request.GET["food"])
-#         if not catalog:
+#         Catalog_food = Catalog.objects.filter(name = request.GET["food"])
+#         if not Catalog:
 #             error = "No food"
-#         return render(request, "delivery/search.html", {"catalog_food": catalog_food, "error": error})
-
+#         return render(request, "delivery/search.html", {"Catalog_food": Catalog_food, "error": error})
 
 
 @login_required(login_url="/")
@@ -63,12 +58,10 @@ def menu(request):
         sale = Basket.objects.create(user=user, name=name)
         sale.save()
         print(user, name)
-        messages.success(
-            request, ("Товар успещно добавлен в корзину.")
-        )
+        messages.success(request, ("Товар успещно добавлен в корзину."))
         return redirect("menu")
-    food_list = catalog.objects.order_by("name")
-    return render(request, "delivery/menu.html", {"food_list":food_list})
+    food_list = Catalog.objects.order_by("name")
+    return render(request, "delivery/menu.html", {"food_list": food_list})
 
 
 def faq(request):
@@ -97,7 +90,7 @@ def regist(request):
             return redirect("start")
     else:
         form = RegisterUserForm()
-    return render(request, "delivery/regist.html", {"form":form})
+    return render(request, "delivery/regist.html", {"form": form})
 
 
 @anonymous_required

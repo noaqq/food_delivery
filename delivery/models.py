@@ -11,7 +11,7 @@ CATEGORY_CHOICES = (
 )
 
 
-class catalog(models.Model):
+class Catalog(models.Model):
     name = models.CharField("Название товара", max_length=100)
     category = models.CharField("Категория", choices=CATEGORY_CHOICES, max_length=50)
     price = models.IntegerField()
@@ -19,10 +19,9 @@ class catalog(models.Model):
     expiration_date = models.CharField("Срок годности", max_length=50)
     image = models.ImageField(blank=True, upload_to="delivery/static/assets/food")
 
-
     def __str__(self):
         return self.name
-    
+
 
 class Basket(models.Model):
     user = models.IntegerField("Имя пользователя")
@@ -30,5 +29,3 @@ class Basket(models.Model):
 
     def __str__(self):
         return self.name
-
-

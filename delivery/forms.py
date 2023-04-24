@@ -19,38 +19,30 @@ class RegisterUserForm(UserCreationForm):
         help_text=(''),
         validators=[username_validator],
         error_messages={'unique': ("Такой пользователь существует")},
-        widget=forms.TextInput(attrs={'class': 'form-control'})
+        widget=forms.TextInput(attrs={'class': 'form-control'}),
     )
     password1 = forms.CharField(
-        label=('Пароль'),
-        widget=(forms.PasswordInput(attrs={'class': 'form-control'})),
-        help_text=''
+        label=('Пароль'), widget=(forms.PasswordInput(attrs={'class': 'form-control'})), help_text=''
     )
     password2 = forms.CharField(
-        label=('Подтверждение пароля'), 
+        label=('Подтверждение пароля'),
         widget=forms.PasswordInput(attrs={'class': 'form-control'}),
         help_text=('Введите пароль повторно'),
     )
     email = forms.EmailField(
         label="Email",
         required=True,
-        widget=forms.EmailInput(
-            attrs={"class": "form-control", "placeholder": "Введите email"}
-        ),
+        widget=forms.EmailInput(attrs={"class": "form-control", "placeholder": "Введите email"}),
     )
     first_name = forms.CharField(
         label="Имя",
         required=True,
-        widget=forms.TextInput(
-            attrs={"class": "form-control", "placeholder": "Введите имя"}
-        )
+        widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Введите имя"}),
     )
     last_name = forms.CharField(
         label="Фамилия",
         required=True,
-        widget=forms.TextInput(
-            attrs={"class": "form-control", "placeholder": "Введите фамилию"}
-        ),
+        widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Введите фамилию"}),
     )
 
     class Meta:
@@ -71,9 +63,7 @@ class RegisterUserForm(UserCreationForm):
         }
 
 
-class catalogForm(forms.ModelForm):
+class CatalogForm(forms.ModelForm):
     class Meta:
-        model = catalog
+        model = Catalog
         fields = '__all__'
-
-
