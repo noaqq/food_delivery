@@ -6,8 +6,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import RegisterUserForm, catalogForm
+from delivery.models import catalog
+
+from .forms import AddToCartForm, RegisterUserForm, catalogForm
 from .models import *
+from .models import Cart, CartItem
 
 
 def anonymous_required(function=None, redirect_url="start"):
@@ -119,7 +122,14 @@ def logout_user(request):
     return redirect("start")
 
 
-def basket(request):
-    pass
-
-
+# def basket(request):
+#     if request.method == "POST":
+#         # user = request.POST["user"]
+#         # name = request.POST["name"]
+#         # order = Basket.objects.create(user=user, name=name)
+#         # order.save()
+#         # # print(user, name)
+#         # # messages.success(
+#         # #     request, ("Товар успещно добавлен в корзину.")
+#         # # )
+#         # return redirect("order")
