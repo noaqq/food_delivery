@@ -2,14 +2,12 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import redirect, render
 
-from delivery.models import Catalog
+from delivery.models import Basket, Catalog
 
 from .forms import CatalogForm, RegisterUserForm
-from .models import *
 
 
 def anonymous_required(function=None, redirect_url="start"):
@@ -117,12 +115,40 @@ def logout_user(request):
 
 # def basket(request):
 #     if request.method == "POST":
-#         # user = request.POST["user"]
-#         # name = request.POST["name"]
-#         # order = Basket.objects.create(user=user, name=name)
-#         # order.save()
-#         # # print(user, name)
-#         # # messages.success(
-#         # #     request, ("Товар успещно добавлен в корзину.")
-#         # # )
-#         # return redirect("order")
+#         user = request.POST["user"]
+#         name = request.POST["name"]
+#         order = Basket.objects.create(user=user, name=name)
+#         order.save()
+#         print(user, name)
+#         messages.success(request, ("Товар успещно добавлен в корзину."))
+#         return render(request, "delivery/order.html")
+
+
+# def basket(request):
+#     if request.method == "POST":
+#         user = request.POST.get("user")
+#         name = request.POST.get("name")
+#         if user and name:
+#             order = Basket.objects.create(user=user, name=name)
+#             order.save()
+#             print(user, name)
+#             messages.success(request, ("Товар успещно добавлен в корзину."))
+#             return render(request, "delivery/order.html")
+#         else:
+#             messages.error(request, ("Ошибка при добавлении товара в корзину."))
+#     return render(request, "delivery/.html")
+
+
+def basket(request):
+    if request.method == "POST":
+        try:
+            user = request.POST["user"]
+            name = request.POST["name"]
+            order = Basket.objects.create(user=user, name=name)
+            order.save()
+            print(user, name)
+            messages.success(request, ("Товар успешно добавлен в корзину."))
+            return render(request, "delivery/order.html")
+        except KeyError:
+            messages.error(request, ("Ошибка при добавлении товара в корзину."))
+    return render(request, "delivery/order.html")
