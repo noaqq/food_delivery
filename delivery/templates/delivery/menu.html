@@ -68,7 +68,7 @@
                       {% csrf_token %}
                       <input type="hidden" name="user" value="{{ user.id }}">
                       <input type="hidden" name="name" value="{{ el.name }}">
-                      <button type="submit" class="btn" name="Basket">Добавить</button>
+                      <button type="submit" class="btn" name="Basket"><a>Добавить</a></button>
                     </form>
 
                   </div>
@@ -77,7 +77,7 @@
               {% endif %}
               {% endfor %}
 
-              <div class = "logo-text">
+              {% comment %} <div class = "logo-text">
                 <h3>Мясо и птица</h3>
               </div>
               <div class = "food">
@@ -95,7 +95,7 @@
               </div>
               {% endif %}
               {% endfor %}
-            </div>
+            </div> {% endcomment %}
           </main>
           {% endblock %}
     </div>
