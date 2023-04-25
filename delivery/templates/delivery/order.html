@@ -36,12 +36,14 @@
             <li><a href="{% url 'logout' %}">Выход</a></li>
             {% endif %} {% if request.user.is_anonymous %}
             <li><a href="{% url 'regist' %}">Регистрация</a></li>
-            {% endif %} {% if request.user.is_staff and
-            request.user.is_authenticated %}
-            <li><a href="{% url 'create' %}">Создать</a></li>
+            {% endif %} 
+            {% if request.user.is_staff and request.user.is_authenticated %}<li><a href="{% url 'create' %}">Создать</a></li>
             {% endif %}
           </ul>
         </div>
+        {% for food in basket %}
+        <h1>{{food.name}}<h1>
+        {% endfor %}
       </div>
     </div>
   </body>
