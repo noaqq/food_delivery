@@ -43,6 +43,8 @@
         </div>
         {% for food in food_list %}
         <h1>{{ food.name }}<h1>
+        <h1>{{ food.price }}<h1>
+        <img src="{{ food.image }}"></img>
         {% comment %} <h1>{{ food.user }}<h1> {% endcomment %}
         {% endfor %} 
       </div>
