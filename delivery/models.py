@@ -26,6 +26,8 @@ class Catalog(models.Model):
 class Basket(models.Model):
     user = models.IntegerField("Имя пользователя")
     name = models.CharField("Название товара", max_length=300)
+    price = models.IntegerField()
+    image = models.ImageField(blank=True, upload_to="delivery/static/assets/food")
 
     def __str__(self):
         return self.name
