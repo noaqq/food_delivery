@@ -124,31 +124,6 @@ def logout_user(request):
 #         return render(request, "delivery/order.html")
 
 
-# def basket(request):
-#     if request.method == "POST":
-#         user = request.POST.get("user")
-#         name = request.POST.get("name")
-#         if user and name:
-#             order = Basket.objects.create(user=user, name=name)
-#             order.save()
-#             print(user, name)
-#             messages.success(request, ("Товар успещно добавлен в корзину."))
-#             return render(request, "delivery/order.html")
-#         else:
-#             messages.error(request, ("Ошибка при добавлении товара в корзину."))
-#     return render(request, "delivery/.html")
-
-
 def basket(request):
-    if request.method == "POST":
-        try:
-            user = request.POST["user"]
-            name = request.POST["name"]
-            order = Basket.objects.create(user=user, name=name)
-            order.save()
-            print(user, name)
-            messages.success(request, ("Товар успешно добавлен в корзину."))
-            return render(request, "delivery/order.html")
-        except KeyError:
-            messages.error(request, ("Ошибка при добавлении товара в корзину."))
-    return render(request, "delivery/order.html")
+    food_list = Basket.objects.all()
+    return render(request, "delivery/order.html", {"food_list": food_list})
