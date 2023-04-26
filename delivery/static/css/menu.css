@@ -51,28 +51,59 @@
       font-size: 13px;
   }
 
-  .btn {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 7px 0 0;
-  }
 
-  .btn a {
-      margin-left: 30px;
-      width: 150px;
+  .knop {
+      width: 100px;
+      padding-left: 100px;
       height: 40px;
       font-size: 15px;
       text-align: center;
-      padding: 12px;
+      /* padding: 12px; */
       text-decoration: none;
       border: none;
+      outline: none;
       color: #fff;
-      font-family: "Poppins", sans-serif;
+      font-family: "Poppins",
+          sans-serif;
       font-weight: 700;
       background-color: #ffb732;
       border-radius: 20px;
   }
+
+
+  .btn {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: end;
+      gap: 50px;
+
+  }
+
+  .btn button {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: end;
+      width: 100px;
+      height: 40px;
+      gap: 50px;
+      text-decoration: none;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: "Poppins",
+          sans-serif;
+      font-weight: 700;
+      font-size: 0.9em;
+      background-color: #ffb732;
+      border-radius: 20px;
+  }
+
+  a {
+      margin-right: 10px;
+  }
+
 
   .price {
       color: #595959;
@@ -83,6 +114,5 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      /* justify-content: space-between; */
       gap: 1em;
   }
