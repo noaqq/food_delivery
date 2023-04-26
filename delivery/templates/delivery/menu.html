@@ -29,6 +29,7 @@
               {% if request.user.is_staff and request.user.is_authenticated %}<li><a href="{% url 'create' %}">Создать</a></li> {% endif %}
             </ul>
           </div>
+
           <main>
             <div class = "top-box">
                 <div class = "text-top-box">
@@ -41,43 +42,35 @@
                   <p>Чипсы, орехи, сухофрукты</p>
               </div>
             </div>
-              {% comment %} {% for el in food_list %}
-                <div class = "list">
-                  <h3>{{ el.name }}</h3>
-                  <h3>{{ el.category }}</h3>
-                  <h3>{{ el.price }}</h3>
-                  <h3>{{ el.description }}</h3>
-                  <h3>{{ el.expiration_date }}</h3>
-                  <img src="{{ el.image }}">
-                </div> 
-              {% endfor %} {% endcomment %}
 
-              <h3>Молочная продукция</h3>
-              <div class = "food">
-              {% for el in food_list %}
-              {% if el.category == "Молоко, яйца, масло" %}
-              <div class="container-food">
-                <img src="{{ el.image }}"/>
-                <div class="content-box">
-                  <h4 class="name">{{ el.name }}</h4>
-                  <div class="btn">
-                    <h2 class="price">{{ el.price }} ₽</h2>
-                    {% comment %} <a href="#">В корзину</a> {% endcomment %}
+            <div class = "logo-text">
+              <h3>Молоко, яйца, масло</h3>
+            </div>
+            <div class = "food">
+            {% for el in food_list %}
+            {% if el.category == "Молоко, яйца, масло" %}
+            <div class="container-food">
+              <img src="{{ el.image }}"/>
+              <div class="content-box">
+                <h4 class="name">{{ el.name }}</h4>
+                <div class="btn">
+                  <h2 class="price">{{ el.price }} ₽</h2>
 
-                    <form method="post">
-                      {% csrf_token %}
-                      <input type="hidden" name="user" value="{{ user.id }}">
-                      <input type="hidden" name="name" value="{{ el.name }}">
-                      <button type="submit" class="btn" name="Basket"><a>Добавить</a></button>
-                    </form>
-
-                  </div>
+                  <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="user" value="{{ user.id }}">
+                    <input type="hidden" name="name" value="{{ el.name }}">
+                    <input type="hidden" name="price" value="{{ el.price }}">
+                    <input type="hidden" name="image" value="{{ el.image }}">
+                    <button type="submit" class="btn" name="Basket"><a>Добавить</a></button>
+                  </form>
                 </div>
               </div>
-              {% endif %}
-              {% endfor %}
+            </div>
+            {% endif %}
+            {% endfor %}
 
-              {% comment %} <div class = "logo-text">
+              <div class = "logo-text">
                 <h3>Мясо и птица</h3>
               </div>
               <div class = "food">
@@ -89,13 +82,156 @@
                   <h4 class="name">{{ el.name }}</h4>
                   <div class="btn">
                     <h2 class="price">{{ el.price }} ₽</h2>
-                    <a href="#">В корзину</a>
+
+                    <form method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="user" value="{{ user.id }}">
+                      <input type="hidden" name="name" value="{{ el.name }}">
+                      <input type="hidden" name="price" value="{{ el.price }}">
+                      <input type="hidden" name="image" value="{{ el.image }}">
+                      <button type="submit" class="btn" name="Basket"><a>Добавить</a></button>
+                    </form>
+
                   </div>
                 </div>
               </div>
               {% endif %}
               {% endfor %}
-            </div> {% endcomment %}
+
+              <h3>Выпечка</h3>
+              <div class = "food">
+              {% for el in food_list %}
+              {% if el.category == "Выпечка" %}
+              <div class="container-food">
+                <img src="{{ el.image }}"/>
+                <div class="content-box">
+                  <h4 class="name">{{ el.name }}</h4>
+                  <div class="btn">
+                    <h2 class="price">{{ el.price }} ₽</h2>
+
+                    <form method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="user" value="{{ user.id }}">
+                      <input type="hidden" name="name" value="{{ el.name }}">
+                      <input type="hidden" name="price" value="{{ el.price }}">
+                      <input type="hidden" name="image" value="{{ el.image }}">
+                      <button type="submit" class="btn" name="Basket"><a>Добавить</a></button>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              {% endfor %}
+
+              <h3>Бакалея</h3>
+              <div class = "food">
+              {% for el in food_list %}
+              {% if el.category == "Бакалея" %}
+              <div class="container-food">
+                <img src="{{ el.image }}"/>
+                <div class="content-box">
+                  <h4 class="name">{{ el.name }}</h4>
+                  <div class="btn">
+                    <h2 class="price">{{ el.price }} ₽</h2>
+
+                    <form method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="user" value="{{ user.id }}">
+                      <input type="hidden" name="name" value="{{ el.name }}">
+                      <input type="hidden" name="price" value="{{ el.price }}">
+                      <input type="hidden" name="image" value="{{ el.image }}">
+                      <button type="submit" class="btn" name="Basket"><a>Добавить</a></button>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              {% endfor %}
+
+
+              <h3>Полуфабрикаты</h3>
+              <div class = "food">
+              {% for el in food_list %}
+              {% if el.category == "Полуфабрикаты" %}
+              <div class="container-food">
+                <img src="{{ el.image }}"/>
+                <div class="content-box">
+                  <h4 class="name">{{ el.name }}</h4>
+                  <div class="btn">
+                    <h2 class="price">{{ el.price }} ₽</h2>
+
+                    <form method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="user" value="{{ user.id }}">
+                      <input type="hidden" name="name" value="{{ el.name }}">
+                      <input type="hidden" name="price" value="{{ el.price }}">
+                      <input type="hidden" name="image" value="{{ el.image }}">
+                      <button type="submit" class="btn" name="Basket"><a>Добавить</a></button>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              {% endfor %}
+
+
+              <h3>Напитки</h3>
+              <div class = "food">
+              {% for el in food_list %}
+              {% if el.category == "Напитки" %}
+              <div class="container-food">
+                <img src="{{ el.image }}"/>
+                <div class="content-box">
+                  <h4 class="name">{{ el.name }}</h4>
+                  <div class="btn">
+                    <h2 class="price">{{ el.price }} ₽</h2>
+
+                    <form method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="user" value="{{ user.id }}">
+                      <input type="hidden" name="name" value="{{ el.name }}">
+                      <input type="hidden" name="price" value="{{ el.price }}">
+                      <input type="hidden" name="image" value="{{ el.image }}">
+                      <button type="submit" class="btn" name="Basket"><a>Добавить</a></button>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              {% endfor %}
+
+
+              <h3>Чипсы, орехи, сухофрукты</h3>
+              <div class = "food">
+              {% for el in food_list %}
+              {% if el.category == "Чипсы, орехи, сухофрукты" %}
+              <div class="container-food">
+                <img src="{{ el.image }}"/>
+                <div class="content-box">
+                  <h4 class="name">{{ el.name }}</h4>
+                  <div class="btn">
+                    <h2 class="price">{{ el.price }} ₽</h2>
+
+                    <form method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="user" value="{{ user.id }}">
+                      <input type="hidden" name="name" value="{{ el.name }}">
+                      <input type="hidden" name="price" value="{{ el.price }}">
+                      <input type="hidden" name="image" value="{{ el.image }}">
+                      <button type="submit" class="btn" name="Basket"><a>Добавить</a></button>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              {% endfor %}
+
+            </div> 
           </main>
           {% endblock %}
     </div>
