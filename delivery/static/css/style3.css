@@ -5,9 +5,6 @@ a {
 
 .landing-page {
     position: relative;
-    /* background-image: url("../assets/iron_texture.jpg") ; */
-    /* background: linear-gradient(0deg, rgba(0,0,0,1) 30%, rgba(228,220,188,1) 100%); */
-    /* background: linear-gradient(15deg, rgb(255, 128, 2) 51%, rgb(241, 190, 37) 70%); */
     background: aliceblue;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -89,11 +86,8 @@ a {
 }
 
 p {
-    /* background-color: #f99d00; */
     border: 2px solid #ffb732;
     border-radius: 20px;
-    /* height: 28px; */
-    /* padding: 5px; */
     color: #525252;
     border-radius: 20px;
     padding: 10px 18px;
