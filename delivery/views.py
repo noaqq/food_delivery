@@ -53,9 +53,11 @@ def menu(request):
     if request.method == "POST":
         user = request.POST["user"]
         name = request.POST["name"]
-        sale = Basket.objects.create(user=user, name=name)
+        price = request.POST["price"]
+        image = request.POST["image"]
+        sale = Basket.objects.create(user=user, name=name, price=price, image=image)
         sale.save()
-        print(user, name)
+        print(user, name, price, image)
         messages.success(request, ("Товар успещно добавлен в корзину."))
         return redirect("menu")
     food_list = Catalog.objects.order_by("name")
