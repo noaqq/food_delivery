@@ -30,6 +30,41 @@
             </ul>
           </div>
 
+          {% comment %} popup {% endcomment %}
+          <div class="popup">
+            <div class="popup-content">
+              <span class="close">&times;</span>
+              <h2>Введите ваш адрес</h2>
+              <form>
+                <label for="address">Адрес:</label>
+                <input type="text" id="address" name="address" required>
+                <button type="submit">Отправить</button>
+              </form>
+            </div>
+          </div>
+
+          <script>
+            const popup = document.querySelector('.popup');
+            const closeBtn = popup.querySelector('.close');
+
+            function showPopup() {
+              popup.classList.add('active');
+            }
+
+            function hidePopup() {
+              popup.classList.remove('active');
+            }
+
+            setTimeout(showPopup, 500); // Появление popup через секунду после загрузки страницы
+
+            closeBtn.addEventListener('click', hidePopup); // Закрытие popup при клике на кнопку "Закрыть"
+            popup.addEventListener('click', (e) => {
+              if (e.target === popup) {
+                hidePopup(); // Закрытие popup при клике на фон
+              }
+            });
+          </script>
+
           <main>
             <div class = "top-box">
                 <div class = "text-top-box">
