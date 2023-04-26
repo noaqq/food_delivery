@@ -41,9 +41,10 @@
             {% endif %}
           </ul>
         </div>
-        {% for food in basket %}
-        <h1>{{food.name}}<h1>
-        {% endfor %}
+        {% for food in food_list %}
+        <h1>{{ food.name }}<h1>
+        {% comment %} <h1>{{ food.user }}<h1> {% endcomment %}
+        {% endfor %} 
       </div>
     </div>
   </body>
