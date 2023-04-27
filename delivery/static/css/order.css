@@ -1,0 +1,57 @@
+.order-exit a {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1em;
+}
+
+
+.order-exit {
+    margin-top: 60px;
+}
+
+
+.order-main-cont {
+    display: flex;
+    align-items: center;
+    width: 700px;
+    height: 150px;
+    background-color: #F8F7F5;
+    border-radius: 20px;
+    margin-bottom: 30px;
+
+}
+
+
+.order-image {
+    margin-left: 20px;
+}
+
+
+.order-price {
+    font-size: 0.6em;
+    color: rgb(118, 118, 118);
+}
+
+
+.order-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+}
+
+
+.order-food-cont {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.order-about {
+    margin-left: 50px;
+    width: 400px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.5em;
+}
+
+
+.input-group {
+    margin-top: 14px;
+}
