@@ -115,29 +115,30 @@ def logout_user(request):
     logout(request)
     return redirect("start")
 
+    # def basket(request):
+    #     if request.method == "POST":
+    #         user = request.POST["user"]
+    #         name = request.POST["name"]
+    #         order = Basket.objects.create(user=user, name=name)
+    #         order.save()
+    #         print(user, name)
+    #         messages.success(request, ("Товар успещно добавлен в корзину."))
+    #         return render(request, "delivery/order.html")
 
-# def basket(request):
-#     if request.method == "POST":
-#         user = request.POST["user"]
-#         name = request.POST["name"]
-#         order = Basket.objects.create(user=user, name=name)
-#         order.save()
-#         print(user, name)
-#         messages.success(request, ("Товар успещно добавлен в корзину."))
-#         return render(request, "delivery/order.html")
+    # def basket(request):
+    # food_list = Basket.objects.all()
 
 
-# def basket(request):
-#     food_list = Basket.objects.all()
 #     sum = Basket.objects.aggregate(Sum('price'))['price__sum']
 #     total = sum + 99
 #     return render(request, "delivery/order.html", {"food_list": food_list, "sum": sum, "total": total})
 
 
 def basket(request):
+    food_list = Basket.objects.all()
     basket_items = Basket.objects.filter(user=request.user)
-    sum_price = Basket.objects.filter(user=request.user).aggregate(Sum('price'))['price__sum'] + 99
-    print('sum_price:', sum_price)
+    sum_price = Basket.objects.filter(user=request.user).aggregate(Sum('price'))['price__sum']
+    # total = sum_price + 99
 
     if request.method == 'POST':
         item_id = request.POST.get('item_id')
@@ -146,6 +147,11 @@ def basket(request):
         print('Item deleted:', item_id)
         return redirect('order')
 
-    context = {'basket_items': basket_items, 'sum_price': sum_price}
+    context = {
+        "food_list": food_list,
+        "sum_price": sum_price,
+        # "total": total,
+        'basket_items': basket_items,
+    }
 
     return render(request, 'delivery/order.html', context)
