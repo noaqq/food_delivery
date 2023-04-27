@@ -92,7 +92,11 @@
                       {{ food.price }} ₽
                       <h1>
                    </div>
-                   <a>Удалить товар</a>
+                   <form method="POST" action="{% url 'order' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="item_id" value="{{ item.id }}">
+                    <button type="submit">Удалить из корзины</button>
+                </form>
                 </div>
                 <div class="input-group">
                    <input type="button" value="-" id="button_minus">
