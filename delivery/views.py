@@ -2,6 +2,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.db.models import Sum
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 
@@ -128,4 +129,6 @@ def logout_user(request):
 
 def basket(request):
     food_list = Basket.objects.all()
-    return render(request, "delivery/order.html", {"food_list": food_list})
+    sum = Basket.objects.aggregate(Sum('price'))['price__sum']
+    total = sum + 99
+    return render(request, "delivery/order.html", {"food_list": food_list, "sum": sum, "total": total})
