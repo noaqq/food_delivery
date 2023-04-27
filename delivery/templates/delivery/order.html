@@ -48,33 +48,63 @@
    
         <div class="order-text">
           <h1>Корзина</h1>
+          <h2>Очистить корзину</h2>
         </div>
-   
-        {% for food in food_list %}
-        <div class="order-main-cont">
-        <div class="order-food-cont">
-          <div class="order-image">
-            <img src="{{ food.image }}", width="100px" height="100px"></img>
+
+        <div class="order-total">
+          <div class="order-block-head">
+            <h1>Итого </h1>
+            <h2>Доставка 10-15 минут </h2>
           </div>
-          
-          <div class="order-about">
-            <h1>{{ food.name }}<h1>
-              <div class="order-price">
-                <h1>{{ food.price }} ₽<h1>
-              </div>
+          <hr>
+          <div class="order-block-total">
+            <h2>Товары </h2>.
+            <h2>{{ sum|floatformat:0 }} ₽</h2>
           </div>
-          <div class="input-group">
-            <input type="button" value="-" id="button_minus">
-            <input type="number" step="1" min="1" max="10" id="num_count" name="quantity" value="1" title="Qty">
-            <input type="button" value="+" id="button_plus">
+          <div class="order-block-total">
+            <h2>Доставка </h2>
+            <h2>99 ₽</h2>
+          </div>
+          <hr>
+          <div class="order-block-end-total">
+            <h2>К оплате<h2>
+            <h2>{{ total|floatformat:0 }} ₽</h2>
+          </div>
+          <div class="order-button">
+            <div class="order-block-button">          
+             <button><a>Оплатить</a></button>
+           </div>
           </div>
         </div>
-      </div>
-        {% endfor %} 
+        
+          {% for food in food_list %}
+          <div class="order-main-cont">
+             <div class="order-food-cont">
+                <div class="order-image">
+                   <img src="{{ food.image }}", width="100px" height="100px"></img>
+                </div>
+                <div class="order-about">
+                   <h1>
+                   {{ food.name }}
+                   <h1>
+                   <div class="order-price">
+                      <h1>
+                      {{ food.price }} ₽
+                      <h1>
+                   </div>
+                   <a>Удалить товар</a>
+                </div>
+                <div class="input-group">
+                   <input type="button" value="-" id="button_minus">
+                   <input type="number" step="1" min="1" max="10" id="num_count" name="quantity" value="1" title="Qty">
+                   <input type="button" value="+" id="button_plus">
+                </div>
+             </div>
+          </div>
+          {% endfor %} 
+        
 
 
-      </div>
-    </div>
 
     <script>
       var numCount = document.getElementById('num_count');
