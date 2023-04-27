@@ -59,7 +59,7 @@
           <hr>
           <div class="order-block-total">
             <h2>Товары </h2>.
-            <h2>{{ sum|floatformat:0 }} ₽</h2>
+            <h2>{{ sum_price|floatformat:0 }} ₽</h2>
           </div>
           <div class="order-block-total">
             <h2>Доставка </h2>
@@ -92,11 +92,12 @@
                       {{ food.price }} ₽
                       <h1>
                    </div>
-                   <form method="POST" action="{% url 'order' %}">
+                  <form method="POST" action="{% url 'order' %}">
                     {% csrf_token %}
                     <input type="hidden" name="item_id" value="{{ item.id }}">
                     <button type="submit">Удалить из корзины</button>
-                </form>
+                  </form>
+                
                 </div>
                 <div class="input-group">
                    <input type="button" value="-" id="button_minus">
