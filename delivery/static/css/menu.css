@@ -118,14 +118,6 @@
   }
 
 
-/* .price-selector{
-    color: #595959;
-    font-family: 'Open Sans', sans-serif;
-    padding-left: 13px;
-    font-size: 1em;
-    padding-top: 40px;
-} */
-
 .price-selector {
     display: flex;
     align-items: center;
