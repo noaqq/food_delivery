@@ -72,7 +72,7 @@
           </div>
           <div class="order-button">
             <div class="order-block-button">          
-             <button><a>Оплатить</a></button>
+             <button><a href="{% url 'payment' %}">Оплатить</a></button>
            </div>
           </div>
         </div>
@@ -94,7 +94,7 @@
                    </div>
                   <form method="POST" action="{% url 'order' %}">
                     {% csrf_token %}
-                    <input type="hidden" name="item_id" value="{{ item.id }}">
+                    <input type="hidden" name="item_id" value="{{ food.id }}">
                     <button type="submit">Удалить из корзины</button>
                   </form>
                 
