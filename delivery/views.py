@@ -128,19 +128,18 @@ def logout_user(request):
     # def basket(request):
     # food_list = Basket.objects.all()
 
-
-#     sum = Basket.objects.aggregate(Sum('price'))['price__sum']
-#     total = sum + 99
-#     return render(request, "delivery/order.html", {"food_list": food_list, "sum": sum, "total": total})
+    # sum = Basket.objects.aggregate(Sum('price'))['price__sum']
+    # total = sum + 99
+    # return render(request, "delivery/order.html", {"food_list": food_list, "sum": sum, "total": total})
 
 
 def basket(request):
-    food_list = Basket.objects.all()
     basket_items = Basket.objects.filter(user=request.user)
-    sum_price = Basket.objects.filter(user=request.user).aggregate(Sum('price'))['price__sum']
-    # total = sum_price + 99
+    sum_price = basket_items.aggregate(Sum('price'))['price__sum']
+    total = sum_price + 99
 
     if request.method == 'POST':
+        print(request.POST)
         item_id = request.POST.get('item_id')
         item_to_delete = Basket.objects.get(id=item_id)
         item_to_delete.delete()
@@ -148,10 +147,13 @@ def basket(request):
         return redirect('order')
 
     context = {
-        "food_list": food_list,
+        "food_list": basket_items,
         "sum_price": sum_price,
-        # "total": total,
-        'basket_items': basket_items,
+        "total": total,
     }
 
     return render(request, 'delivery/order.html', context)
+
+
+def payment(request):
+    return render(request, 'delivery/payment.html')
