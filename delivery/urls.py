@@ -12,6 +12,7 @@ urlpatterns = [
     path("payment", views.payment, name="payment"),
     path("delivery", views.delivery, name="delivery"),
     path("create", views.create, name="create"),
+    # path("delete_product", views.delete_product, name="delete_product"),
     path("login", views.login_user, name="login_user"),
     path("regist", views.regist, name="regist"),
     path("logout", views.logout_user, name="logout"),
