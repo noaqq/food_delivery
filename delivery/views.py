@@ -40,6 +40,12 @@ def create(request):
     return render(request, "delivery/create.html", {"form": form, "submitted": submitted})
 
 
+# def delete_product(request, name):
+#     product = Catalog.objects.get(name=name)
+#     product.delete()
+#     return render(request, "delivery/create.html")
+
+
 # def search_food(request):
 #     if request.method == "GET":
 #         error = None
@@ -114,23 +120,6 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect("start")
-
-    # def basket(request):
-    #     if request.method == "POST":
-    #         user = request.POST["user"]
-    #         name = request.POST["name"]
-    #         order = Basket.objects.create(user=user, name=name)
-    #         order.save()
-    #         print(user, name)
-    #         messages.success(request, ("Товар успещно добавлен в корзину."))
-    #         return render(request, "delivery/order.html")
-
-    # def basket(request):
-    # food_list = Basket.objects.all()
-
-    # sum = Basket.objects.aggregate(Sum('price'))['price__sum']
-    # total = sum + 99
-    # return render(request, "delivery/order.html", {"food_list": food_list, "sum": sum, "total": total})
 
 
 def basket(request):
