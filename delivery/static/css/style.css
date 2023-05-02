@@ -6,6 +6,8 @@
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: aliceblue;
+    width: auto;
+    height: auto;
 }
 
 a {
