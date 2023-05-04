@@ -43,12 +43,16 @@
         </div>
         
         <div class="order-exit">
-          <a>← Вернуться в каталог</a>
+          <a href="{% url "menu" %}">← Вернуться в каталог</a>
         </div>
    
         <div class="order-text">
           <h1>Корзина</h1>
-          <h2>Очистить корзину</h2>
+          <form method="POST" action="{% url 'clear_basket' %}">
+            {% csrf_token %}
+            <button type="submit">Очистить корзину</button>
+            <input type="hidden" name="item_id" value="{{ food.id }}">
+          </form> 
         </div>
 
         <div class="order-total">
@@ -92,18 +96,21 @@
                       {{ food.price }} ₽
                       <h1>
                    </div>
-                  <form method="POST" action="{% url 'order' %}">
-                    {% csrf_token %}
-                    <input type="hidden" name="item_id" value="{{ food.id }}">
-                    <button type="submit">Удалить из корзины</button>
-                  </form>
+                   <div class = "form-delete">
+                      <form method="POST" action="{% url 'order' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_id" value="{{ food.id }}">
+                        <button type="submit">Удалить</button>
+                      </form>
+                  </div>
+                  
                 
                 </div>
-                <div class="input-group">
+                {% comment %} <div class="input-group">
                    <input type="button" value="-" id="button_minus">
                    <input type="number" step="1" min="1" max="10" id="num_count" name="quantity" value="1" title="Qty">
                    <input type="button" value="+" id="button_plus">
-                </div>
+                </div> {% endcomment %}
              </div>
           </div>
           {% endfor %} 
