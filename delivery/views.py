@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Sum
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from delivery.models import Basket, Catalog
 
@@ -40,22 +40,29 @@ def create(request):
     return render(request, "delivery/create.html", {"form": form, "submitted": submitted})
 
 
-# def delete_product(request, name):
-#     product = Catalog.objects.get(name=name)
-#     product.delete()
-#     return render(request, "delivery/create.html")
+def update(request):
+    submitted = False
+    if request.method == "POST":
+        product_id = request.POST.get('product')
+        product = Catalog.objects.get(id=product_id)
+        form = CatalogForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("/update?submitted=True")
+    else:
+        form = CatalogForm
+        if "submitted" in request.GET:
+            submitted = True
+    products = Catalog.objects.all()
+    return render(request, "delivery/update.html", {"form": form, "products": products, "submitted": submitted})
 
 
-# def search_food(request):
-#     if request.method == "GET":
-#         error = None
-#         Catalog_food = Catalog.objects.filter(name = request.GET["food"])
-#         if not Catalog:
-#             error = "No food"
-#         return render(request, "delivery/search.html", {"Catalog_food": Catalog_food, "error": error})
+def delete(request, id):
+    catalog = get_object_or_404(Catalog, id=id)
+    catalog.delete()
+    return HttpResponseRedirect("/create")
 
 
-@login_required(login_url="/")
 def menu(request):
     if request.method == "POST":
         user = request.POST["user"]
@@ -125,7 +132,11 @@ def logout_user(request):
 def basket(request):
     basket_items = Basket.objects.filter(user=request.user)
     sum_price = basket_items.aggregate(Sum('price'))['price__sum']
-    total = sum_price + 99
+    total = 0
+    if sum_price is None:
+        sum_price = 0
+    else:
+        total = sum_price + 99
 
     if request.method == 'POST':
         print(request.POST)
@@ -142,6 +153,11 @@ def basket(request):
     }
 
     return render(request, 'delivery/order.html', context)
+
+
+def clear_basket(request):
+    Basket.objects.filter(user=request.user).delete()
+    return render(request, "delivery/order.html")
 
 
 def payment(request):
