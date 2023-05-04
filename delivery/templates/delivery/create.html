@@ -1,5 +1,5 @@
 {% extends 'delivery/base.html' %} {% block title %} Создать товар {% endblock%}
-{% block content%} 
+{% block content%}
 
 <style>
   .main-box {
@@ -13,30 +13,67 @@
     background-color: #fff;
     border-radius: 10px;
   }
+  .main-create-block {
+    display: flex;
+    flex-diretion: row;
+    justify-content: center;
+    margin-left: -300px;
+    gap: 30px;
+  }
 </style>
-<div class="main-box">
-  <div class="box">
-    <center><h1>Создать товар</h1></center>
-    {% if submitted %}
-    <div class="success" role="alert">Товар успешно создан!</div>
-    {% endif %}
+<div class="main-create-block">
+  <div class="main-box">
+    <div class="box">
+      <center><h1>Создать товар</h1></center>
+      {% if submitted %}
+      <div class="success" role="alert">Товар успешно создан!</div>
+      {% endif %}
 
-    <form action="" method="post" enctype="multipart/form-data">
-      {% csrf_token %} {{ form.as_p }}
-      <button type="submit" class="btn btn-primary">Создать</button>
-      <span>{{error}}</span>
-    </form>
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Создать</button>
+        <span>{{error}}</span>
+      </form>
+    </div>
+  </div>
+
+  <div class="main-box">
+    <div class="box">
+      <center><h1>Редактировать товар</h1></center>
+      {% if submitted %}
+      <div class="success" role="alert">Товар успешно обновлен!</div>
+      {% endif %}
+
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <select name="product">
+          {% for product in products %}
+          <option value="{{ product.id }}">{{ product.name }}</option>
+          {% endfor %}
+        </select>
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <span>{{error}}</span>
+      </form>
+    </div>
+  </div>
+
+  <div class="main-box">
+    <div class="box">
+      <center><h1>Удалить товар</h1></center>
+
+      <p>Вы действительно хотите удалить этот товар?</p>
+
+      <form action="" method="post">
+        {% csrf_token %}
+        <select name="product">
+          {% for product in products %}
+          <option value="{{ product.id }}">{{ product.name }}</option>
+          {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-danger">Да, удалить</button>
+      </form>
+    </div>
   </div>
 </div>
-
-{% comment %} {% for el in food_list %}
-<div>
-    <h3>{{ el.name }}</h3>
-    <p>{{ el.price }}</p>
-    <form action="{% url 'delete_product' el.name %}" method="post">
-      {% csrf_token %}
-      <button type="submit">Удалить</button>
-    </form>
-  </div>
-{% endfor %} {% endcomment %}
 {% endblock %}
