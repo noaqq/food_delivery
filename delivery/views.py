@@ -78,6 +78,22 @@ def menu(request):
     return render(request, "delivery/menu.html", {"food_list": food_list})
 
 
+def menu_category(request, category):
+    if request.method == "POST":
+        user = request.POST["user"]
+        name = request.POST["name"]
+        price = request.POST["price"]
+        image = request.POST["image"]
+
+        sale = Basket.objects.create(user=user, name=name, price=price, image=image)
+        sale.save()
+        print(user, name, price, image)
+        messages.success(request, ("Товар успещно добавлен в корзину."))
+        return redirect("menu")
+    food_list = Catalog.objects.filter(category=category).order_by("name")
+    return render(request, "delivery/menu.html", {"food_list": food_list})
+
+
 def faq(request):
     return render(request, "delivery/faq.html")
 
@@ -153,6 +169,21 @@ def basket(request):
     }
 
     return render(request, 'delivery/order.html', context)
+
+
+def sort_food(request):
+    if request.method == 'POST':
+        if request.POST.get("sort_option") == 'highest_price':
+            food_list = Catalog.objects.order_by("price").reverse()
+            context = {
+                "food_list": food_list,
+            }
+        else:
+            food_list = Catalog.objects.order_by("price")
+            context = {
+                "food_list": food_list,
+            }
+    return render(request, 'delivery/menu.html', context)
 
 
 def clear_basket(request):
