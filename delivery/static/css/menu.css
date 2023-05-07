@@ -116,3 +116,100 @@
       flex-wrap: wrap;
       gap: 1em;
   }
+
+
+/* .price-selector{
+    color: #595959;
+    font-family: 'Open Sans', sans-serif;
+    padding-left: 13px;
+    font-size: 1em;
+    padding-top: 40px;
+} */
+
+.price-selector {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-top: 40px;
+    padding-left: 12px;
+  }
+  
+  .price-selector label {
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  
+  .price-selector select {
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-right: 10px;
+  }
+  
+  .price-selector button {
+      width: 110px;
+      height: 40px;
+      text-decoration: none;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: "Poppins",
+          sans-serif;
+      font-weight: 700;
+      font-size: 0.9em;
+      background-color: #ffb732;
+      border-radius: 20px;
+  }
+  
+  .price-selector button:hover {
+    background-color: #ffb73293;
+  }
+  
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+  }
+  
+  .item h3 {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+  
+  .item p {
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  
+  .item form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .item form button {
+    padding: 5px 10px;
+    background-color: #f44336;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .item form button:hover {
+    background-color: #d32f2f;
+  }
+  
+  .total {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
