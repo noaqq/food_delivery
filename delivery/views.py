@@ -2,6 +2,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.models import User
 from django.db.models import Sum
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
@@ -107,14 +108,21 @@ def delivery(request):
     return render(request, "delivery/delivery.html")
 
 
-@anonymous_required
 def regist(request):
     if request.method == "POST":
         form = RegisterUserForm(request.POST)
+        print(request.POST)
         if form.is_valid():
-            form.save()
             username = form.cleaned_data.get("username")
             password = form.cleaned_data.get("password1")
+            user = User.objects.create_user(
+                username=request.POST["username"],
+                first_name=request.POST["first_name"],
+                last_name=request.POST["last_name"],
+                email=request.POST["email"],
+                password=request.POST["password1"],
+            )
+            user.save()
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect("start")
