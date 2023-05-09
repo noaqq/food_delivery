@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.contrib import messages
+from django.contrib import auth, messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
@@ -130,19 +130,34 @@ def regist(request):
     return render(request, "delivery/regist.html", {"form": form})
 
 
-@anonymous_required
+# @anonymous_required
+# def login_user(request):
+#     if request.method == "POST":
+#         username = request.POST["username"]
+#         password = request.POST["password"]
+#         user = authenticate(request, username=username, password=password)
+#         if user is not None:
+#             login(request, user)
+#             return redirect("start")
+#         else:
+#             return render(request, "delivery/login_user.html")
+#     else:
+#         return render(request, "delivery/login_user.html")
+
+
+# @anonymous_required(redirect_url="start")
 def login_user(request):
     if request.method == "POST":
-        username = request.GET["username"]
-        password = request.GET["password"]
-        user = authenticate(request, username=username, password=password)
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = auth.authenticate(username=username, password=password)
+
         if user is not None:
-            login(request, user)
-            return redirect("start")
+            auth.login(request, user)
+            return redirect("login_user")
         else:
-            return render(request, "delivery/login_user.html")
-    else:
-        return render(request, "delivery/login_user.html")
+            return redirect("login_user")
+    return render(request, "delivery/login_user.html")
 
 
 @login_required(login_url="start")
