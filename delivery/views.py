@@ -154,7 +154,7 @@ def login_user(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect("login_user")
+            return redirect("catalog")
         else:
             return redirect("login_user")
     return render(request, "delivery/login_user.html")
