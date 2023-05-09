@@ -111,7 +111,6 @@ def delivery(request):
 def regist(request):
     if request.method == "POST":
         form = RegisterUserForm(request.POST)
-        print(request.POST)
         if form.is_valid():
             username = form.cleaned_data.get("username")
             password = form.cleaned_data.get("password1")
@@ -134,14 +133,13 @@ def regist(request):
 @anonymous_required
 def login_user(request):
     if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
+        username = request.GET["username"]
+        password = request.GET["password"]
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             return redirect("start")
         else:
-            messages.success(request, "Логин или пароль неверны")
             return render(request, "delivery/login_user.html")
     else:
         return render(request, "delivery/login_user.html")
